@@ -15,16 +15,16 @@ rust_binary(
         "@examples//hello_lib",
         ":hello_from_c_sys",
         ],
- rustc_flags = [
-      "-Clink-args=-lstdc++",
-    ],
-    
+    # TODO: This should not be needed, but currently is.
+    # rustc_flags = [
+      # "-Clink-args=-lstdc++",
+    # ],
 )
 
 rust_library(
     name = "hello_from_c_sys",
     srcs = ["src/lib.rs"],
- rustc_flags = [
+    rustc_flags = [
       "-Clink-args=-lstdc++",
     ],
     deps = [
