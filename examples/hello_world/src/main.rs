@@ -13,10 +13,13 @@
 // limitations under the License.
 
 extern crate hello_lib;
+extern crate hello_from_c_sys;
 
 use hello_lib::greeter;
 
 fn main() {
     let hello = greeter::Greeter::new("Hello");
     hello.greet("world");
+
+    hello_from_c_sys::say_something();
 }
