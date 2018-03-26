@@ -16,7 +16,12 @@ extern crate hello_lib;
 
 use hello_lib::greeter;
 
+// TODO(sirver): This does not work
+// const MSG: &str = include_str!("message.string");
+// This does, but only with my hack
+const MSG: &str = include_str!(concat!(env!("BAZEL_GENFILES_DIR"), "/external/examples/hello_world/message.string"));
+
 fn main() {
     let hello = greeter::Greeter::new("Hello");
-    hello.greet("world");
+    hello.greet(MSG);
 }

@@ -335,6 +335,12 @@ def _rust_binary_impl(ctx):
                              output_dir = output_dir,
                              depinfo = depinfo)
 
+  print("#sirver ctx.files.data:", ctx.files.data)
+  for d in ctx.files.data:
+    print("#sirver d.path:", d.path)
+  print("#sirver ctx.genfiles_dir:", ctx.genfiles_dir.path)
+  print("#sirver ctx.bin_dir:", ctx.bin_dir.path)
+  print("#sirver output_dir:", output_dir)
   # Compile action.
   compile_inputs = (
       ctx.files.srcs +
