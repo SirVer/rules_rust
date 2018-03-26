@@ -37,6 +37,8 @@ def build_rustc_command(ctx, toolchain, crate_name, crate_type, src, output_dir,
           "LD_LIBRARY_PATH=%s" % _get_path_str(_get_dir_names(toolchain.rustc_lib)),
           "DYLD_LIBRARY_PATH=%s" % _get_path_str(_get_dir_names(toolchain.rustc_lib)),
       ] + depinfo.env_vars + [
+          "BAZEL_GENFILES_DIR=$(pwd)/%s" % ctx.genfiles_dir.path,
+          "BAZEL_BIN_DIR=$(pwd)/%s" % ctx.bin_dir.path,
           toolchain.rustc.path,
           src.path,
           "--crate-name %s" % crate_name,
