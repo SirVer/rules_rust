@@ -120,18 +120,10 @@ rust_toolchain(
 def rust_repositories():
   native.new_http_archive(
       name = "rust_linux_x86_64",
-      url = "https://static.rust-lang.org/dist/2018-01-15/rust-nightly-x86_64-unknown-linux-gnu.tar.gz",
-      strip_prefix = "rust-nightly-x86_64-unknown-linux-gnu",
-      sha256 = "fc354360e0e6a4fbc171b7a6678e37e55b447775c9e0f1eb37e0aca61efaa949",
+      url = "https://static.rust-lang.org/dist/rust-1.25.0-x86_64-unknown-linux-gnu.tar.gz",
+      strip_prefix = "rust-1.25.0-x86_64-unknown-linux-gnu",
+      sha256 = "06fb45fb871330a2d1b32a27badfe9085847fe824c189ddc5204acbe27664f5e",
       build_file_content = RUST_LINUX_BUILD_FILE,
-  )
-
-  native.new_http_archive(
-      name = "rust_darwin_x86_64",
-      url = "https://static.rust-lang.org/dist/rust-1.20.0-x86_64-apple-darwin.tar.gz",
-      strip_prefix = "rust-1.20.0-x86_64-apple-darwin",
-      sha256 = "fa1fb8896d5e327cbe6deeb50e6e9a3346de629f2e6bcbd8c10f19f3e2ed67d5",
-      build_file_content = RUST_DARWIN_BUILD_FILE,
   )
 
   native.new_local_repository(
@@ -141,5 +133,5 @@ def rust_repositories():
 
   # Register toolchains
   native.register_toolchains(
-      "@rust_default_toolchains//:rust-linux-x86_64",
-      "@rust_default_toolchains//:rust-darwin-x86_64")
+      "@rust_default_toolchains//:rust-linux-x86_64"
+  )
